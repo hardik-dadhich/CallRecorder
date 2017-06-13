@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">CallReco</string>
+    <string name="title_activity_tabbed_activity">Tabbed_activity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">tab activty: %1$d</string>
+</resources>
