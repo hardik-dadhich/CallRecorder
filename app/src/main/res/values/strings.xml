@@ -3,4 +3,9 @@
     <string name="title_activity_tabbed_activity">Tabbed_activity</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">tab activty: %1$d</string>
+    <string name="sample_device_admin">sample_device_admin</string>
+    <string name="activity_sample_device_admin">sample_device_dmin</string>
+    <string name="admin_reciver_activity_disable">admin_reciver_activity_disable</string>
+    <string name="admin_reciver_status_enable">admin_reciver_status_enable</string>
+    <string name="admin_receiver_status">admin_receiver_status</string>
 </resources>

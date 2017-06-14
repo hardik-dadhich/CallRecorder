@@ -23,7 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class Callogs extends FragmentActivity{
+public class Callogs extends FragmentActivity {
 
     private static final String TAG = "Callogs";
 
@@ -32,54 +32,61 @@ public class Callogs extends FragmentActivity{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.call_logs, container, false);
         return view;
-    if( ContextCompat.checkSelfPermission(Callogs.this, Manifest.permission.READ_CALL_LOG) != PackageManager.PERMISSION_GRANTED)
-    {
-        if(ActivityCompat.shouldShowRequestPermissionRationale(Callogs.this,Manifest.permission.READ_CALL_LOG))
-        {
-                ActivityCompat.requestPermissions(Callogs.this,new String[]{Manifest.permission.READ_CALL_LOG},1);
+
+
+
+        if (ContextCompat.checkSelfPermission(Callogs.this, Manifest.permission.READ_CALL_LOG) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(Callogs.this, Manifest.permission.READ_CALL_LOG)) {
+                ActivityCompat.requestPermissions(Callogs.this, new String[]{Manifest.permission.READ_CALL_LOG}, 1);
+            } else {
+                ActivityCompat.requestPermissions(Callogs.this, new String[]{Manifest.permission.READ_CALL_LOG}, 1);
+            }
+        } else {
+
+
+            TextView textView = (TextView) findViewById(R.id.textView1);
+            textView.setText(getCallDeetals());
+
         }
-        else
-        {
-            ActivityCompat.requestPermissions(Callogs.this,new String[]{Manifest.permission.READ_CALL_LOG},1);
-        }
-    } else {
-
-
-        TextView textView = (TextView)findViewById(R.id.textView1);
-        textView .setText(getCallDeetals());
-
-    }
 
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions,  int[] grantResults) {
-       switch (requestCode)
-       {
-           case 1 :{
-               if(grantResults.length > 0  && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-               {
-                         if(ContextCompat.checkSelfPermission(Callogs.this,Manifest.permission.READ_CALL_LOG) == PackageManager.PERMISSION_GRANTED)
-                         {
-                             Toast.makeText(Callogs.this,"Permission granted",Toast.LENGTH_LONG).show();
 
 
-                             TextView textView = (TextView)findViewById(R.id.textView1);
-                             textView .setText(getCallDeetals());
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    if (ContextCompat.checkSelfPermission(Callogs.this, Manifest.permission.READ_CALL_LOG) == PackageManager.PERMISSION_GRANTED) {
+                        Toast.makeText(Callogs.this, "Permission granted", Toast.LENGTH_LONG).show();
 
-                         }
-               }
-               else {
-                   Toast.makeText(Callogs.this, "no permission granted" ,Toast.LENGTH_LONG ).show();
-               }
-               return;
-           }
-       }
+
+                        TextView textView = (TextView) findViewById(R.id.textView1);
+                        textView.setText(getCallDeetals());
+
+                    }
+                } else {
+                    Toast.makeText(Callogs.this, "no permission granted", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        }
     }
-  private String getCallDeetals()
-  {
-      StringBuffer sb= new StringBuffer();
-      Cursor managedCursor = getContentResolver().query(CallLog.Calls.CONTENT_URI,null,null,null,null);
+
+    private String getCallDeetals() {
+        StringBuffer sb = new StringBuffer();
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CALL_LOG) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+              //  ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return TODO;
+        }
+        Cursor managedCursor = getContentResolver().query(CallLog.Calls.CONTENT_URI, null, null, null, null);
       int number = managedCursor.getColumnIndex(CallLog.Calls.NUMBER);
       int type = managedCursor.getColumnIndex(CallLog.Calls.TYPE);
       int date = managedCursor.getColumnIndex(CallLog.Calls.DATE);
