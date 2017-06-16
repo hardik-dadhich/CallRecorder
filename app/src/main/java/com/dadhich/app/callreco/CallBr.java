@@ -14,9 +14,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by DeLL on 14/06/2017.
- */
+
 
 class CallBr  extends BroadcastReceiver{
 

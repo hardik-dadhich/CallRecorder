@@ -8,4 +8,5 @@
     <string name="admin_reciver_activity_disable">admin_reciver_activity_disable</string>
     <string name="admin_reciver_status_enable">admin_reciver_status_enable</string>
     <string name="admin_receiver_status">admin_receiver_status</string>
+    <string name="large_test">Large test</string>
 </resources>
